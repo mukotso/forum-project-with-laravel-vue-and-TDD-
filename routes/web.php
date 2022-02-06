@@ -27,4 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/threads', [ThreadsController::class, 'index']);
 Route::get('/threads/{thread}', [ThreadsController::class, 'show']);
-Route::get('/threads/{thread}/replies', [RepliesController::class, 'store']);
+Route::post('/threads/{thread}/replies', [RepliesController::class, 'store']);
