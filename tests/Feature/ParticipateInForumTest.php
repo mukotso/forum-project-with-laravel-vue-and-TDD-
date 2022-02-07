@@ -17,9 +17,7 @@ class ParticipateInForumTest extends TestCase
     public function test_an_authenticated_user_may_participate_in_forum_thread()
     {
        //given we have an authenticated user
-
-
-        $this->be(User::factory()->create());
+        $this->signIn();
         //and an existing thread
         $thread=Thread::factory()->create();
 //        when a user adds areply to the thread
