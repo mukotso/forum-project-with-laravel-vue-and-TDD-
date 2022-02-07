@@ -22,6 +22,13 @@ public function test_guest_may_not_create_thread(){
    $this->post('/threads',$thread->toArray());
 
 }
+
+    public function test_guest_cannot_see_Create_thread_page(){
+        $this->post('/threads/create')
+            ->assertRedirect('/login');
+
+    }
+
     public function test_an_authenticated_user_can_Create_new_thread ()
     {
         //Given we have a signed in user
