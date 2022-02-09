@@ -34,7 +34,7 @@ public function test_guest_may_not_create_thread(){
         //Given we have a signed in user
         $this->actingAs(User::factory()->create());
         //when we hit the end point to create a thread
-        $thread=Thread::factory()->make();
+        $thread=Thread::factory()->create();
 
         $response=$this->post('/threads',$thread->toArray());
        $this->get($thread->path())->assertSee($thread->title);

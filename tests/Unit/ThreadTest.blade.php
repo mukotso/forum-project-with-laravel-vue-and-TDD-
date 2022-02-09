@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 u
-use App\Models\Thread;
+use App\Models\Channel;use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
@@ -39,6 +39,22 @@ class ThreadTest extends TestCase
                 ]
         );
 
-        $this->assertCount($this->thread->replies)
+        $this->assertCount(1,$this->thread->replies)
+    }
+
+
+    public function test_a_thread_belongs_to_a_channnel(){
+
+
+        $thread=create(Thread);
+        $this->asssertInstanceOf(Channel::class ,$thread->channel)
+
+    }
+
+    public function test_a_thread_can_make_a_string_path(){
+    $thread=create  (User);
+
+    $this->assertEquals('/threads/{$thread->channel->slug}/{thread->id}',$thread->path()
+    );
     }
 }
